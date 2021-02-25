@@ -8,14 +8,14 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/first-page')
-def first_page():
-    return render_template('first-page.html', page_title="First Template")
+@app.route('/community')
+def community():
+    return render_template('community.html', page_title="Community")
 
 
-@app.route('/second-page')
-def second_page():
-    return render_template('second-page.html', page_title="Second Template")
+@app.route('/studyprogram')
+def studyprogram():
+    return render_template('studyprogram.html', page_title="Study Program")
 
 # add additonal pages here using a similar format as above
 
