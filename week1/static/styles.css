@@ -161,6 +161,7 @@ input[type=submit] {
 .container{
     margin:10% 5% 15% 5%;
     width:90%;
+    padding-bottom: 20%;
 }
 img{
     display:inline;
@@ -182,6 +183,18 @@ img{
     font-size: 30px;
     color:gray;
     margin-bottom: 60px;
+}
+.link {
+    box-sizing: border-box;
+    display:block;
+    width:100%;
+    padding:0 50%;
+}
+.link a{
+    box-sizing: border-box;
+    display:block;
+    margin:auto;
+    padding:0 50%;
 }
 
   
