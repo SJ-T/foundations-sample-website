@@ -1,18 +1,50 @@
-body {
+body,
+html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 2rem;
+    margin: 0;
+    height:100%;
 }
 
 .banner{
-    margin-top: 2rem;
-    color: blueviolet;
+    margin-top: 10rem;
+    color: rgb(43, 226, 89);
     margin-bottom: 1rem;
+}
+.campus {
+    
+    background-image: url("https://code.berlin/content/uploads/8f750e8e-1200x800.jpg");
+    height:60vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;  
+}
+.welcome{
+    font-weight: 400;
+    font-size: 5vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    color: rgb(255, 255, 255);
+    position:absolute;
+    bottom:45%;
+    left:5%;
+    text-shadow: 3px 3px #000000;
+    /* display:block; */
+}
+.index-text{
+    width:70%;
+    margin:auto;
+    margin-bottom: 15%;
+    padding:20px;
 }
 .topnav{
     background-color:rgb(29,32,34);
     overflow:hidden;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    
   }
-  .topnav a{
+.topnav a{
     float:left;
     color:white;
     text-align:center;
@@ -22,38 +54,135 @@ body {
     font-family:"Source Sans Pro", Calibri, "Gill Sans", "Open Sans", sans-serif;
     font-weight:bold;
   }
-  .topnav a:hover{
+.topnav a:hover{
     background-color:#ddd;
     color:rgb(29,32,34);
   }
-  .topnav a.active{
+.topnav a.active{
     background-color:#a3a3c2;
     color:white;
   }
-  footer{
+footer{
     position:fixed;
     width:100%;
     background-color:rgb(29,32,34);
     color:white;
-    
     font-family:"Source Sans Pro", Calibri, "Gill Sans", "Open Sans", sans-serif;
     left:0;
     bottom:0;
     height:20%
   }
-  .button{
-    margin-left:25%;
-    margin-top:7vh;
+.button{
+    position:absolute;
+    left:10%;
+    top: 35%;
     
   }
-  .btn{
-    border:none;
+.btn{
+    border:2px solid;
+    border-radius: 20%;
     color:white;
-    padding:20px 20px;
-    font-size:16px;
+    background-color:rgb(29,32,34);
+    padding-bottom:40px;
+    font-size:30px;
     cursor:pointer;
+    width:45px;
+    height:40px;
     
   }
-  .btn:hover{
-    background-color:;
+.btn:hover{
+    background-color:white;
+    color:black
   }
+.vl{
+      border-left:1px solid rgb(185, 182, 182);
+      height:80%;
+      position:absolute;
+      left:50%;
+      margin-left:-3px;
+      top:10%;
+
+  }
+.contact{
+    position:absolute;
+    left:60%;
+    top:25%;
+    padding:10px auto;
+  }
+
+.contact .title{
+      font-size: 30px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      display:block;
+      padding-bottom: 10px;
+      
+  }
+.info{
+      margin-left:20px;
+      height:32px;
+      font-family: monospace;
+      font-size: 16px;
+  }
+.contact i{
+    
+    padding:5px 0;
+    width:30px;
+    font-size: 20px;
+    margin-left: 10px;
+    text-align: center;
+  }
+.form{
+    position:absolute;
+    left:23%;
+    top:25%;
+    width:25vw;
+    font-size: 1.5vw;
+  }
+label{
+    display: block;
+}
+input{
+    font-size:1.5vw;
+}
+input[type=submit] {
+    padding:3px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    border-radius: 5px; 
+}
+.spot{
+    margin-bottom: 5%;
+}
+.title{
+    display: block;
+    font-size: 25px;
+}
+.container{
+    margin:10% 5% 15% 5%;
+    width:90%;
+}
+img{
+    display:inline;
+    margin-left: 10%;
+}
+.content{
+    margin-right:15%;
+    display: inline;
+    float:right;
+    width:45%;
+}
+.container h1{
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 25px;
+}
+.container h3{
+    text-align: center;
+    font-size: 30px;
+    color:gray;
+    margin-bottom: 60px;
+}
+
+  
+  

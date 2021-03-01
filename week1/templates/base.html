@@ -8,20 +8,16 @@
   	<meta charset="utf-8"/>
     <!-- include the css from the file static/style.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
 
   <!-- this headline will appear on all pages. -->
   <header>
         <div class="topnav">
-      <a href="/index" class="">Home</a>
+      <a href="/" class="">Home</a>
       <a href="/community" class="">Community</a>
       <a href="/studyprogram" class="">Study Program</a>
-    </div>
-    <div class="banner">
-      <h1> All about CODE </h1> 
-      <h3> A really great place. </h3>
     </div>
 
     
@@ -35,9 +31,24 @@
   </main>
   <footer>
     <div class="button">
-      <button class="btn"><i class="fab fa-facebook-f"></i></button>
-    <button class="btn"><i class="fab fa-instagram"></i></button>
-    <button class="btn"><i class="fab fa-twitter"></i></button>
-      </div>      
+      <button class="btn"><i class="fa fa-facebook-f"></i></button>
+    <button class="btn"><i class="fa fa-instagram"></i></button>
+    <button class="btn"><i class="fa fa-twitter"></i></button>
+      </div> 
+      <div class="form">
+        <form action="">
+          <label for="email">Let us keep you posted!</label>
+          <input type="text" value="mail@example.com">
+          <input type="submit" value="OK">
+          
+        </form>
+      </div>
+      <div class="vl"></div>
+      <div class="contact">
+        <span class="title">Contact</span>
+        <div><i class="fa fa-envelope"></i><span class="info">hello@code.berlin</span></div>
+        <div><i class="fa fa-phone"></i><span class="info">+49 (30) 120 859 81</span></div>
+        
+      </div>     
     </footer>
   </body>
