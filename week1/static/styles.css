@@ -188,14 +188,7 @@ img{
     box-sizing: border-box;
     display:block;
     width:100%;
-    padding:0 50%;
-}
-
-.link a{
-    box-sizing: border-box;
-    display:block;
-    margin:auto;
-    padding:0 50%;
+    text-align: center;
 }
 
   
