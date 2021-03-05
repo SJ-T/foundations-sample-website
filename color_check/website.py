@@ -3,7 +3,7 @@ from color_check.controllers.get_color_code import get_color_code
 import logging
 app = Flask(__name__)
 
-logging.basicConfig(filename='/tmp/color_check.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+# logging.basicConfig(filename='/tmp/color_check.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
 
 @app.route('/')
@@ -23,22 +23,10 @@ def show_color():
     # - if the color doesn't exist, give the user a useful error message.
     # - create a log.txt file which records (logs) the user requests. 
     
-    user_submitted_string = request.form.get("color")
-    
-    # check if it's a int or float, if so, give error message. page stays in index.html (maybe can do this in html form validation use pattern?)
+    user_submitted_string = request.form.get("color")   
     color_hex_code = get_color_code(user_submitted_string)
     
-    # check the color is in json or not, if not color_hex_code would be None
-    
-    
-    # if color_hex_code == None:
-    #     message = "Sorry I don't know this color"
-    #     #still render to color.html with an error message and transparent background
-    #     return 
-    
-    
-    # requirements all meet, log the input data and render to the normal color.html
-    logging.info('Form entry: %s', user_submitted_string)
+    # logging.info('Form entry: %s', user_submitted_string)
 
     return render_template('color.html', page_title="Show Color",
                            color_hex_code=color_hex_code)
