@@ -3,7 +3,7 @@ from color_check.controllers.get_color_code import get_color_code
 import logging
 app = Flask(__name__)
 
-logging.basicConfig(filename='./color_check.log', filemode='w', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+logging.basicConfig(filename='tmp/color_check.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
 
 @app.route('/')
@@ -39,6 +39,7 @@ def show_color():
     
     # requirements all meet, log the input data and render to the normal color.html
     logging.info('Form entry: %s', user_submitted_string)
+
     return render_template('color.html', page_title="Show Color",
                            color_hex_code=color_hex_code)
     
