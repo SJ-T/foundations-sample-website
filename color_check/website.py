@@ -32,12 +32,12 @@ def show_color():
     
     # check the color is in json or not, if not color_hex_code would be None
     
-    '''
-    if color_hex_code == None:
-        message = "Sorry I don't know this color"
-        #still render to color.html with an error message and transparent background
-        return 
-    '''
+    
+    # if color_hex_code == None:
+    #     message = "Sorry I don't know this color"
+    #     #still render to color.html with an error message and transparent background
+    #     return 
+    
     
     # requirements all meet, log the input data and render to the normal color.html
     logging.info('Form entry: %s', user_submitted_string)
