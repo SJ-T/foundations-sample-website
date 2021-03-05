@@ -13,7 +13,7 @@
     <form action="/color" method="post">
         <!-- add the contents of your form here -->
         <label for="name"> Color: </label>
-        <input type="text" name="color" id="color" required >
+        <input type="text" name="color" id="color" required pattern="[A-Za-z]" maxlength="30">
         <input type="submit" value="OK">
     </form>
 
