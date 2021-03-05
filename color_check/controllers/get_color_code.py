@@ -1,4 +1,4 @@
-import ast
+import json
 # This file should contain a function called get_color_code().
 # This function should take one argument, a color name,
 # and it should return one argument, the hex code of the color,
@@ -11,15 +11,14 @@ def get_color_code(color_name):
     # this is where you should add your logic to check the color.
     # Open the file at data/css-color-names.json, and return the hex code
     # The file can be considered as JSON format, or as a Python dictionary.
-    with open('data/css-color-names.json', 'r') as f:
-        f_color = f.read()
-        color = ast.literal_eval(f_color)
+    with open('data/css-color-names.json') as f:
+        color = json.load(f)
         color_names = color.keys()
-
+        
+        #hex_code = color.get(color_name)
     
     if color_name in color_names:
         hex_code = color[color_name]
         
         return hex_code
 
-print(type(get_color_code("blue")))

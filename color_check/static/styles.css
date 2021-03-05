@@ -40,3 +40,11 @@ input[type=submit]:hover{
     transform: translateY(1px);
     background:rgb(158, 158, 158);
 }
+
+p, h1{
+    text-shadow: 1px 1px white;
+}
+h3{
+    display:inline;
+    background-color: white;
+}
