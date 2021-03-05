@@ -21,6 +21,3 @@ def get_color_code(color_name):
         hex_code = color[color_name]
         
         return hex_code
-
-print(get_color_code("blue"))
-print(type(get_color_code("blue")))

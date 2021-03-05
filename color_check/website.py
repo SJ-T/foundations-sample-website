@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request  
 from color_check.controllers.get_color_code import get_color_code
 import logging
 app = Flask(__name__)
@@ -25,7 +23,7 @@ def show_color():
     # - if the color doesn't exist, give the user a useful error message.
     # - create a log.txt file which records (logs) the user requests. 
     
-    user_submitted_string = request.form['color']
+    user_submitted_string = request.form.get("color")
     
     # check if it's a int or float, if so, give error message. page stays in index.html (maybe can do this in html form validation use pattern?)
     color_hex_code = get_color_code(user_submitted_string)
