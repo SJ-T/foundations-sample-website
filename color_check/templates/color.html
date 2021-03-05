@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if color_hex_code = None %}
+<!-- {% if color_hex_code = None %}
 <div class="result">
     <p>Sorry I don't know this color, please input another one.</p>
     <input type="button" onclick="/" value="BACK">
@@ -12,7 +12,7 @@
     }
 </style>
 
-{% else %}
+{% else %} -->
 <div class="result">
         <p>{{color_hex_code}} is the hex code for your color.</p>
     </div>
@@ -21,5 +21,5 @@
             background-color: {{color_hex_code}};
         }
     </style>
-{% endif %}
+<!-- {% endif %} -->
 {% endblock %}
