@@ -17,7 +17,7 @@ def get_color_code(color_name):
         
         #hex_code = color.get(color_name)
     
-    if color_name in color_names:
+    if color_name.lower() in color_names:
         hex_code = color[color_name]
         
         return hex_code

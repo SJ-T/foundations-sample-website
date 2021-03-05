@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="result">
+{% if color_hex_code = None %}
+<div class="result">
+    <p>Sorry I don't know this color, please input another one.</p>
+    <input type="button" onclick="/" value="BACK">
+</div>
+<style>
+    body{
+        background-image: url("http://www.snapfont.com/wp-content/uploads/2020/01/img_0325.jpg");
+    }
+</style>
+
+{% else %}
+<div class="result">
         <p>{{color_hex_code}} is the hex code for your color.</p>
     </div>
     <style>
@@ -9,4 +21,5 @@
             background-color: {{color_hex_code}};
         }
     </style>
+{% endif %}
 {% endblock %}
