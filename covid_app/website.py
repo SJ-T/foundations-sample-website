@@ -8,7 +8,7 @@ from covid_app.controllers.database_helpers import close_conection_to_database
 from covid_app.controllers.database_helpers import change_database
 from covid_app.controllers.database_helpers import query_database
 from covid_app.controllers.database_helpers import query_names
-from tabulate import tabulate
+#from tabulate import tabulate
 
 app = Flask(__name__)
 
