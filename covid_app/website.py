@@ -61,71 +61,71 @@ def index():
 
 @app.route('/create', methods=['POST'])
 def create_meeting():
-#try:
-    name = request.form.get('name')
-    phone_nb = request.form.get('phone_nb')
-    address = request.form.get('address')
-    e_mail = request.form.get('e-mail')
-    # app.logger.info(name)
-    # turn this into an SQL command. For example:
-    # "Adam" --> "INSERT INTO Meetings (name) VALUES("Adam");"
-    
-    sql_insert_contact = "INSERT INTO contacts (name, phone_nb, address, e_mail) VALUES (\"{name}\",\"{phone_nb}\",\"{address}\",\"{e_mail}\");".format(
-        name=name, phone_nb=phone_nb, address=address,e_mail=e_mail)
-    print(sql_insert_contact)
+    try:
+        name = request.form.get('name')
+        phone_nb = request.form.get('phone_nb')
+        address = request.form.get('address')
+        e_mail = request.form.get('e-mail')
+        # app.logger.info(name)
+        # turn this into an SQL command. For example:
+        # "Adam" --> "INSERT INTO Meetings (name) VALUES("Adam");"
+        
+        sql_insert_contact = "INSERT INTO contacts (name, phone_nb, address, e_mail) VALUES (\"{name}\",\"{phone_nb}\",\"{address}\",\"{e_mail}\");".format(
+            name=name, phone_nb=phone_nb, address=address,e_mail=e_mail)
+        print(sql_insert_contact)
 
-    
-    meeting_date = request.form.get('meeting_date')
-    contact = request.form.get('contacts')
-    print(meeting_date, contact)
-    
-    sql_query_contact_id = "SELECT contact_id FROM contacts WHERE name = (\"{contact}\")".format(contact=contact)
-    print(sql_query_contact_id)
-
-
-    database_tuple = connect_to_database(app.config["DATABASE_FILE"])
-    
-    # now that we have connected, add the new meeting (insert a row)
-    # --> see file database_helpers for more  
-    if name!=None:
-        change_database(database_tuple[0], database_tuple[1], sql_insert_contact)
-
-    elif meeting_date!=None and contact!=None:
-        contact_id = query_database(database_tuple[1], sql_query_contact_id)
-        contact_id = int(contact_id[0][0])
-        print(contact_id)
-    
-        sql_insert_meeting = "INSERT INTO meetings (meeting_date, contact_id) VALUES (\"{meeting_date}\",\"{contact_id}\");".format(meeting_date=meeting_date,contact_id=contact_id)
-        print(sql_insert_meeting)
-
-        change_database(database_tuple[0], database_tuple[1], sql_insert_meeting)
-
-    # now, get all of the meetings from the database, not just the new one.
-    # first, define the query to get all meetings:
-
-    sql_query = """SELECT date(meeting_date), contacts.name 
-    FROM meetings 
-    JOIN contacts ON meetings.contact_id=contacts.contact_id 
-    WHERE meeting_date<=date('now') and meeting_date>=date('now','-14 days')
-    ORDER BY date(meeting_date) DESC;"""
+        
+        meeting_date = request.form.get('meeting_date')
+        contact = request.form.get('contacts')
+        print(meeting_date, contact)
+        
+        sql_query_contact_id = "SELECT contact_id FROM contacts WHERE name = (\"{contact}\")".format(contact=contact)
+        print(sql_query_contact_id)
 
 
-    # query the database, by passinng the database cursor and query,
-    # we expect a list of tuples corresponding to all rows in the database
-    meetings = query_database(database_tuple[1], sql_query)
-    print(meetings)
-    # meetings_table = tabulate(meetings, headers=["Name","Date"], showindex="Always", tablefmt="html")
+        database_tuple = connect_to_database(app.config["DATABASE_FILE"])
+        
+        # now that we have connected, add the new meeting (insert a row)
+        # --> see file database_helpers for more  
+        if name!=None:
+            change_database(database_tuple[0], database_tuple[1], sql_insert_contact)
+
+        elif meeting_date!=None and contact!=None:
+            contact_id = query_database(database_tuple[1], sql_query_contact_id)
+            contact_id = int(contact_id[0][0])
+            print(contact_id)
+        
+            sql_insert_meeting = "INSERT INTO meetings (meeting_date, contact_id) VALUES (\"{meeting_date}\",\"{contact_id}\");".format(meeting_date=meeting_date,contact_id=contact_id)
+            print(sql_insert_meeting)
+
+            change_database(database_tuple[0], database_tuple[1], sql_insert_meeting)
+
+        # now, get all of the meetings from the database, not just the new one.
+        # first, define the query to get all meetings:
+
+        sql_query = """SELECT date(meeting_date), contacts.name 
+        FROM meetings 
+        JOIN contacts ON meetings.contact_id=contacts.contact_id 
+        WHERE meeting_date<=date('now') and meeting_date>=date('now','-14 days')
+        ORDER BY date(meeting_date) DESC;"""
 
 
-    
-    names = query_names(database_tuple[1])
+        # query the database, by passinng the database cursor and query,
+        # we expect a list of tuples corresponding to all rows in the database
+        meetings = query_database(database_tuple[1], sql_query)
+        print(meetings)
+        # meetings_table = tabulate(meetings, headers=["Name","Date"], showindex="Always", tablefmt="html")
 
-    close_conection_to_database(database_tuple[0])
 
-    # In addition to HTML, we will respond with an HTTP Status code
-    # The status code 201 means "created": a row was added to the database
-    return render_template('index.html', page_title="Covid Diary",
-                            meetings=meetings, names=names), 201
+        
+        names = query_names(database_tuple[1])
+
+        close_conection_to_database(database_tuple[0])
+
+        # In addition to HTML, we will respond with an HTTP Status code
+        # The status code 201 means "created": a row was added to the database
+        return render_template('index.html', page_title="Covid Diary",
+                                meetings=meetings, names=names), 201
     except Exception:
         # something bad happended. Return an error page and a 500 error
         error_code = 500
