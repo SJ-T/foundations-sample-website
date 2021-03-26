@@ -54,6 +54,14 @@ def query_database(db_cursor, sql_query):
         print("tried to execute the folllwing SQL, but failed:", sql_query)
 
     # list of tuples, where each tuple represents a row in the database
+
     query_response = db_cursor.fetchall()
 
     return query_response
+
+def query_names(db_cursor):
+    sql_query = "SELECT name FROM contacts"
+    names = query_database(db_cursor, sql_query)
+    names = [name[0] for name in names]
+
+    return names

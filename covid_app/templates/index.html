@@ -8,16 +8,47 @@
     to the server (backend). It will send that infromation to a particular URI, at "/color". 
     Your server will then run the code which is defined in website.py at that route. -->
 
-    <form action="/create" method="post">
+    <form action="/create" method="post" autocomplete="off">
         <!-- add the contents of your form here -->
-        <label for="name"> Today I met: </label>
-        <input type="text" name="name" id="name" required>
+
+        <label for="">Create a new contact</label>
+        <input type="text" name="name" id="name" placeholder="Name" required>
+        <input type="text" name="phone_nb" id="phone_nb" placeholder="Phone number">
+        <input type="text" name="address" id="address" placeholder="Address">
+        <input type="text" name="e-mail" id="e-mail" placeholder="E-mail">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/create" method="post">
+        <label for="">Select from contacts</label>
+        <select name="contacts" id="contacts" required>
+            {% for name in names %}
+            <option value="{{name}}">{{name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="">When did you meet?</label>    
+        <input type="date" name="meeting_date" id="meeting_date" placeholder="yyyy/mm/dd" required>
+        <!-- submit? -->
         <input type="submit" value="Submit">
     </form>
 
-    <p> So far, I have met...
-        {{meetings}}
+    <p> These are the meetings I had in the past 14 days
+        
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
+            {% for meeting in meetings%}
+            <tr>
+                <td>{{meeting[1]}}</td>
+                <td>{{meeting[0]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
     </p>
-
+    <!-- {{meetings_table|safe}} -->
 
 {% endblock %}
