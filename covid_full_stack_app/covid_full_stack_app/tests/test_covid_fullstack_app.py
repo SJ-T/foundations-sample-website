@@ -7,6 +7,7 @@ app.config['DATABASE_FILE'] = 'covid_full_stack_app/' + app.config['DATABASE_FIL
 # a functional test
 # instead of checking if a function() does it's job alone, this will check
 # the entire response from the flask app, including the http status code.
+#unit test
 def test_index():
     # create a version of our website that we can use for testing
     with app.test_client() as test_client:
@@ -22,7 +23,7 @@ def test_index():
 
         assert "<html>" in html_content
 
-
+#intergration test
 def test_get():
     # create a version of our website that we can use for testing
     with app.test_client() as test_client:
