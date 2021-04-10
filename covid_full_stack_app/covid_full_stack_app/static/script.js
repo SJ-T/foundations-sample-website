@@ -20,9 +20,16 @@ function getMeetings() {
         // if the response is a 200, check the data returned from the backend isin JSON format.
         // if that passes, print the data to the javascript console on the browser.
         response.json().then(function (data) {
-          console.log(data);
-
+          // console.log(data);
+          // console.log(data.length,typeof(data))
           // Your Homework: instead of printoing to the cosnole, change what the user sees.
+          const meetings = document.querySelector(".meeting-list");
+          let table = document.querySelector("table");
+          if (true){
+            meetings.innerHTML=""
+          }
+          createTable(data);
+
         });
       }
     )
@@ -35,6 +42,7 @@ function createNewMeeting() {
   // creates a new javascript object called form_data, of the type FormData, based on the contents
   // of a form called meeting-form, which is the form defined in index.html.
   const form_data = new FormData(document.getElementById("meeting-form"));
+  
   fetch("/api/meetings", {
     method: "POST",
     body: form_data,
@@ -49,9 +57,51 @@ function createNewMeeting() {
             "Looks like there was a problem. Status Code: " + response.status
           );
         }
-      }
+        const form = document.getElementById("meeting-form")
+        form.reset();
+
+        let main = document.querySelector("main");
+        
+        if (main.contains(document.querySelector(".newMsg"))){
+          main.removeChild(document.querySelector(".newMsg"))
+        }       
+        let newMsg = document.createElement('p');
+        
+        newMsg.setAttribute('class','newMsg');
+        newMsg.textContent="Creating a new meeting!";
+        
+        setTimeout(()=>{form.after(newMsg)},500)}
+
+       
+      
     )
     .catch(function (err) {
       console.log("Fetch Error, booo!", err);
     });
+}
+
+function createTable(tableData){
+  const meetings = document.querySelector(".meeting-list");
+  let table = document.createElement("table");
+  let headRow = document.createElement("tr");
+  
+  let headers = ["Name","Date"];
+  headers.forEach(header=>{
+    let headCell = document.createElement("th");
+    headCell.appendChild(document.createTextNode(header));
+    headRow.appendChild(headCell);
+  })
+  table.appendChild(headRow);
+  tableData.forEach(rowData=>{
+    let row = document.createElement("tr");
+    rowData.forEach(cellData=>{
+      let cell = document.createElement("td");
+      cell.appendChild(document.createTextNode(cellData));
+      row.appendChild(cell);
+    });
+    table.appendChild(row);
+  });
+  meetings.appendChild(table);
+  
+
 }

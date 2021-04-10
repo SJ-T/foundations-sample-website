@@ -1,3 +1,4 @@
 CREATE TABLE Meetings(
-    Name text PRIMARY KEY    
+    Name text PRIMARY KEY
+    Date text 
 );

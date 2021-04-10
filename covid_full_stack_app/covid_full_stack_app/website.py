@@ -48,12 +48,15 @@ def index():
 def create_meeting():
     try:
         name = request.form.get('name')
+        date = request.form.get('date')
         # app.logger.info(name)
         # turn this into an SQL command. For example:
         # "Adam" --> "INSERT INTO Meetings (name) VALUES("Adam");"
-        sql_insert = "INSERT INTO Meetings (name) VALUES (\"{name}\");".format(
-            name=name)
+        sql_insert = "INSERT INTO Meetings (name,date) VALUES (\"{name}\",\"{date}\");".format(
+            name=name,date=date)
 
+        
+ 
         # connect to the database with the filename configured above
         # returning a 2-tuple that contains a connection and cursor object
         # --> see file database_helpers for more

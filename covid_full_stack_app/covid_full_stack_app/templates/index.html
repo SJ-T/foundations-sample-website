@@ -10,8 +10,11 @@
     of the HTML form.
     -->
     <form id="meeting-form" onsubmit="createNewMeeting(event.preventDefault())">
-        <label for="name"> Today I met: </label>
+        <label for="name"> I met: </label>
         <input type="text" name="name" id="name" required>
+        <span>on</span>
+        <input type="date" name="date" id="date" required>
+        <script>$('#date').datepicker();</script>
         <input type="submit" value="Submit">
     </form>
 
@@ -21,5 +24,6 @@
          run until the moment this magic button is clicked.
     -->
     <button onclick="getMeetings()"> Get Data </button>
+    <div class="meeting-list"></div>
 
 {% endblock %}
